@@ -1,0 +1,9 @@
+# dsh-basic-office bundle patch: inserts this plugin into a profile's layer stack.
+#
+# Installed through the official CLI:
+#   dsh plugin --profile <name> add <path-or-package>
+# the command reconciles dsh.profile.bundles against installed packages and,
+# seeing this declaration, appends `dsh-basic-office` to the bundle stack.
+- insert:
+    - id: office-tools
+      name: 'dsh-basic-office'
