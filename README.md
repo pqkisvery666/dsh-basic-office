@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/cover.png" width="720" alt="dsh-basic-office">
+</p>
+
 # dsh-basic-office
 
 DSH 办公文件插件：让 DeepSeek Harness 的 Agent **阅读**常见二进制文档（PDF / DOCX / XLSX / PPTX / CSV），并**生成**常见办公文件（DOCX / XLSX / PPTX / PDF / CSV）。
@@ -26,7 +30,24 @@ DSH 原生的 `read` / `write` / `edit` 只处理 UTF-8 文本（`read_image` �
 - **观察事件**：读取/生成都会发出 `fs/observed`，与原生工具链互通。
 - **规范化**：工具定义遵循官方文档 `docs/user/develop/basic/tool.md` 与 `docs/cookbook/adding-a-tool.md`（`defineTool` + `ctx.tools.register`、参数 DSL、规范返回值、`output.render`、纯函数 `presentCall`）。
 
-## 安装（放入插件目录的真实拷贝方式）
+## 安装（用户）
+
+```sh
+# 无需 git，直接从 GitHub 下载安装（已实测可用）：
+dsh plugin --profile web add https://codeload.github.com/pqkisvery666/dsh-basic-office/tar.gz/refs/heads/main
+
+# 或机器上有 git 时：
+dsh plugin --profile web add git+https://github.com/pqkisvery666/dsh-basic-office.git
+```
+
+安装后 **重启 dsh web 服务**（`Ctrl+C` 后重新 `dsh web`），新工具即对所有会话生效。
+
+```sh
+dsh plugin --profile web up      # 更新
+dsh plugin --profile web remove dsh-basic-office   # 卸载
+```
+
+## 安装（作者：放入插件目录的真实拷贝方式）
 
 插件以 npm tarball 形式安装：`dsh plugin add` 会把 tarball **解包成真实目录**放进 profile 的 `node_modules`（与 dsh-better-sidebar 等同级），**不使用链接**，profile 与开发目录完全解耦。
 
